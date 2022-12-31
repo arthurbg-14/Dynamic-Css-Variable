@@ -1,0 +1,50 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="creator">
+            <label for="background color">Background Color:</label>
+            <input oninput="updateElement()" id="background color" type="color">
+            <br />
+            <label for="width">Width:</label>
+            <input oninput="updateElement()" id="width" type="range" value="100" min="10" max="500">
+            <br />
+            <label for="height">Height:</label>
+            <input oninput="updateElement()" id="height" type="range" value="100" min="10" max="500">
+            <br />
+            <label for="border">Border:</label>
+            <input oninput="updateElement()" id="border" type="range" value="0" min="0" max="50">
+            <br />
+            <label for="border color">Border Color:</label>
+            <input oninput="updateElement()" value="#FF0000" id="border color" type="color">
+            <br />
+            <label for="border radius">Border Radius:</label>
+            <input oninput="updateElement()" id="border radius" type="range" value="0" min="0" max="100">
+        </div>
+        <div class="demonstration">
+            <div id="element" class="element">
+
+            </div>
+        </div>
+        <div class="code" id="code"></div>
+    </div>
+    <script>
+        function updateElement(){
+            const element = document.getElementById("element")
+            const code = document.getElementById("code")
+
+            element.style.backgroundColor = document.getElementById("background color").value    
+            element.style.width = document.getElementById("width").value
+            element.style.height = document.getElementById("height").value
+            element.style.border = document.getElementById("border").value + "px solid " + document.getElementById("border color").value
+            element.style.borderRadius = document.getElementById("border radius").value + "px"
+            
+            code.innerHTML = `background-color: ${element.style.backgroundColor} <br />
+            width: ${element.style.width} <br />
+            height: ${element.style.height} <br />
+            border: ${document.getElementById("border").value + "px solid " + document.getElementById("border color").value} <br />
+            border-radius: ${document.getElementById("border radius").value + "px"} <br />`
+        }
+    </script>
+</body>
